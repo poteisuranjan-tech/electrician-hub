@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Electrician Hub – ITI Learning &amp; Safety Portal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<style>
+:root{--bg:#f3f5f7;--surface:#fff;--ink:#14202b;--mute:#5a6978;--line:#d5dce3;--accent:#f5b800;--on-accent:#14202b;--red:#d93a2f;--yel:#c99700;--blu:#2467c9;--grn:#1f8a4c;--hero:#14202b;--hero-ink:#f3f5f7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e151c;--surface:#17212b;--ink:#e8edf2;--mute:#9aa8b5;--line:#2a3846;--red:#ff6b5e;--yel:#f5b800;--blu:#6aa3ff;--grn:#4cc983;--hero:#0a1016;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e151c;--surface:#17212b;--ink:#e8edf2;--mute:#9aa8b5;--line:#2a3846;--red:#ff6b5e;--yel:#f5b800;--blu:#6aa3ff;--grn:#4cc983;--hero:#0a1016;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;line-height:1.05;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(2.6rem,8vw,4.8rem)}h2{font-size:clamp(2rem,5vw,3rem)}h3{font-size:1.5rem}
+p{margin:0}a{color:inherit}
+:focus-visible{outline:3px solid var(--blu);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--hero);color:var(--hero-ink);padding-top:env(safe-area-inset-top,0px)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font:700 1.45rem "Barlow Condensed",sans-serif;text-decoration:none;display:flex;gap:8px;align-items:center}
+.logo i{background:var(--accent);color:var(--on-accent);width:28px;height:28px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-size:1rem}
+nav{display:flex;gap:6px;align-items:center}
+nav a,.btn-ghost{color:inherit;text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:500;font-size:.95rem;background:none;border:0;cursor:pointer;font-family:inherit}
+nav a:hover,.btn-ghost:hover{background:rgba(255,255,255,.12)}
+#menu{display:none}
+@media(max-width:720px){#menu{display:block}nav{display:none;position:absolute;left:0;right:0;top:calc(60px + env(safe-area-inset-top,0px));background:var(--hero);flex-direction:column;align-items:stretch;padding:8px 20px 16px}nav.open{display:flex}}
+.hero{background:var(--hero);color:var(--hero-ink);padding:48px 0 64px}
+.hero .wrap{display:grid;gap:36px;grid-template-columns:1.1fr 1fr;align-items:center}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+.hero p.lead{margin:18px 0 24px;color:#b9c5d0;max-width:46ch;font-size:1.1rem}
+.cta{display:inline-block;background:var(--accent);color:var(--on-accent);font-weight:600;padding:12px 22px;border-radius:10px;text-decoration:none}
+.phase{display:flex;gap:6px;margin-top:28px}.phase span{height:6px;flex:1;border-radius:3px;max-width:70px}
+.calc{background:var(--surface);color:var(--ink);border-radius:16px;padding:22px;border:1px solid var(--line)}
+.calc h3{margin-bottom:4px}.calc small{color:var(--mute)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:16px 0}
+.seg button,.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 6px;border-radius:8px;font:500 .9rem "IBM Plex Sans",sans-serif;cursor:pointer}
+.seg button[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+label{display:block;font-size:.85rem;color:var(--mute);margin:10px 0 4px}
+input[type=number]{width:100%;padding:11px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:500 1rem "IBM Plex Sans",sans-serif}
+input[disabled]{opacity:.5}
+.out{margin-top:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px dashed var(--line);padding-top:14px}
+.out b{font:700 2rem "Barlow Condensed",sans-serif;display:block}
+section{padding:64px 0}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.sec-h p{color:var(--mute);max-width:52ch;margin-top:8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:8px 16px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-left-width:6px;border-radius:10px;padding:18px}
+.card[data-c=basics]{border-left-color:var(--blu)}.card[data-c=wiring]{border-left-color:var(--yel)}.card[data-c=machines]{border-left-color:var(--red)}.card[data-c=safety]{border-left-color:var(--grn)}
+.meta{font-size:.82rem;color:var(--mute);margin:4px 0 10px}
+.card details summary{cursor:pointer;font-weight:600;font-size:.92rem}
+.card ul{margin:8px 0 0;padding-left:18px;color:var(--mute);font-size:.92rem}
+.safety{background:var(--surface);border-block:1px solid var(--line)}
+.two{display:grid;gap:32px;grid-template-columns:1fr 1fr}@media(max-width:860px){.two{grid-template-columns:1fr}}
+.prog{height:10px;background:var(--bg);border-radius:6px;overflow:hidden;border:1px solid var(--line);margin:14px 0}
+.prog div{height:100%;width:0;background:var(--grn);transition:width .3s}
+.check{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer;margin:0;color:var(--ink);font-size:1rem}
+.check input{width:22px;height:22px;margin-top:2px;accent-color:var(--grn);flex:none}
+.lockout{background:var(--hero);color:var(--hero-ink);border-radius:14px;padding:22px}
+.lockout ol{padding-left:20px;margin:12px 0 0}.lockout li{margin-bottom:6px;color:#c8d3dd}
+.quiz{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;max-width:720px}
+.opt{display:block;width:100%;text-align:left;margin-top:10px;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--blu)}
+.opt.ok{background:color-mix(in srgb,var(--grn) 22%,var(--surface));border-color:var(--grn)}
+.opt.no{background:color-mix(in srgb,var(--red) 20%,var(--surface));border-color:var(--red)}
+.fb{margin-top:14px;color:var(--mute);min-height:3em}
+.qtop{display:flex;justify-content:space-between;color:var(--mute);font-size:.9rem;margin-bottom:10px}
+.next{margin-top:12px;border:0;cursor:pointer;font:600 1rem "IBM Plex Sans",sans-serif}
+footer{background:var(--hero);color:#b9c5d0;padding:32px 0;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.prog div{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top"><i>⚡</i>Electrician Hub</a>
+    <button class="btn-ghost" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="#learn">Modules</a><a href="#safety">Safety</a><a href="#quiz">Quiz</a>
+      <button class="btn-ghost" id="theme" aria-label="Switch light or dark theme">Theme</button>
+    </nav>
+  </div>
+</header>
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Learn the trade. Work safe. Go home.</h1>
+      <p class="lead">A study and safety portal for ITI electrician trainees: theory modules, a live circuit calculator, a pre-work safety checklist and a practice quiz.</p>
+      <a class="cta" href="#learn">Start learning</a>
+      <div class="phase" aria-hidden="true"><span style="background:#d93a2f"></span><span style="background:#e8b800"></span><span style="background:#2467c9"></span><span style="background:#222;outline:1px solid #556"></span><span style="background:#1f8a4c"></span></div>
+    </div>
+    <div class="calc" id="calc">
+      <h3>Ohm’s law calculator</h3><small>Choose what to find, then enter the other two values.</small>
+      <div class="seg" role="group" aria-label="Find">
+        <button aria-pressed="true" data-f="V">Voltage</button><button aria-pressed="false" data-f="I">Current</button><button aria-pressed="false" data-f="R">Resistance</button>
+      </div>
+      <label for="v">Voltage (V)</label><input id="v" type="number" min="0" step="any" inputmode="decimal">
+      <label for="i">Current (A)</label><input id="i" type="number" min="0" step="any" inputmode="decimal">
+      <label for="r">Resistance (Ω)</label><input id="r" type="number" min="0" step="any" inputmode="decimal">
+      <div class="out" aria-live="polite"><div><small id="rl">Voltage</small><b id="rv">–</b></div><div><small>Power</small><b id="pw">–</b></div></div>
+    </div>
+  </div>
+</div>
+
+<section id="learn"><div class="wrap">
+  <div class="sec-h"><div><h2>Trade modules</h2><p>Core topics from the electrician syllabus. Tap a card to see what it covers.</p></div>
+  <div class="chips" role="group" aria-label="Filter modules" id="chips"></div></div>
+  <div class="grid" id="mods"></div>
+</div></section>
+
+<section id="safety" class="safety"><div class="wrap two">
+  <div>
+    <h2>Before you start work</h2>
+    <p style="color:var(--mute);margin-top:8px">Tick each item. Your progress is saved on this device.</p>
+    <div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pb"><div id="pf"></div></div>
+    <p id="pt" style="font-weight:600"></p>
+    <div id="list"></div>
+    <button class="chip" id="reset" style="margin-top:14px">Clear checklist</button>
+  </div>
+  <div class="lockout">
+    <h3>Lock-out / tag-out steps</h3>
+    <ol>
+      <li>Tell everyone nearby that you are isolating the circuit.</li>
+      <li>Switch off and open the supply at the main isolator.</li>
+      <li>Fit your own padlock and a tag with your name and date.</li>
+      <li>Test the tester on a known live source.</li>
+      <li>Test the circuit is dead, phase to phase and phase to earth.</li>
+      <li>Test the tester again, then start work.</li>
+    </ol>
+    <p style="margin-top:16px;color:#c8d3dd">Only the person who fitted the lock removes it.</p>
+  </div>
+</div></section>
+
+<section id="quiz"><div class="wrap">
+  <div class="sec-h"><div><h2>Practice quiz</h2><p>Six questions on theory and safety. You get an explanation after every answer.</p></div></div>
+  <div class="quiz" id="qz" aria-live="polite"></div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>Electrician Hub – ITI Learning &amp; Safety Portal</span><span>For training use. Always follow your instructor and local electrical rules.</span></div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+// Theme + menu
+const root=document.documentElement;
+$('#theme').onclick=()=>{const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;root.dataset.theme=dark?'light':'dark'};
+$('#menu').onclick=e=>{const o=$('#nav').classList.toggle('open');e.target.setAttribute('aria-expanded',o)};
+$('#nav').addEventListener('click',e=>{if(e.target.tagName==='A'){$('#nav').classList.remove('open');$('#menu').setAttribute('aria-expanded',false)}});
+
+// Ohm's law
+let find='V';const ids={V:'v',I:'i',R:'r'},names={V:'Voltage',I:'Current',R:'Resistance'},units={V:'V',I:'A',R:'Ω'};
+function calc(){
+  const g=k=>parseFloat($('#'+ids[k]).value);let V=g('V'),I=g('I'),R=g('R');
+  if(find==='V')V=I*R;if(find==='I')I=V/R;if(find==='R')R=V/I;
+  const f=n=>Number.isFinite(n)?+n.toPrecision(4):null;
+  const res={V,I,R}[find],P=V*I;
+  $('#rv').textContent=f(res)!==null?f(res)+' '+units[find]:'–';
+  $('#pw').textContent=f(P)!==null?f(P)+' W':'–';
+}
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{
+  find=b.dataset.f;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  Object.keys(ids).forEach(k=>{const el=$('#'+ids[k]);el.disabled=k===find;if(k===find)el.value=''});
+  $('#rl').textContent=names[find];calc()});
+['v','i','r'].forEach(id=>$('#'+id).addEventListener('input',calc));$('#v').disabled=true;
+
+// Modules
+const mods=[
+ {t:'Electrical fundamentals',c:'basics',d:'8 weeks',p:['Voltage, current, resistance','Series and parallel circuits','Kirchhoff’s laws']},
+ {t:'AC theory and measurement',c:'basics',d:'6 weeks',p:['Sine waves, RMS and frequency','Single and three phase supply','Using a multimeter and clamp meter']},
+ {t:'Domestic wiring',c:'wiring',d:'10 weeks',p:['Conduit and casing wiring','Two-way and intermediate switching','Earthing and MCB selection']},
+ {t:'Cables and joints',c:'wiring',d:'4 weeks',p:['Cable sizing and colour codes','Soldering and crimping','Insulation resistance testing']},
+ {t:'Transformers and motors',c:'machines',d:'9 weeks',p:['Single phase transformer','Induction motor starters','Fault finding on DOL and star-delta']},
+ {t:'Electrical safety',c:'safety',d:'3 weeks',p:['Shock, burns and first aid','Fire classes and extinguishers','PPE and safe work practice']}];
+const cats={all:'All',basics:'Basics',wiring:'Wiring',machines:'Machines',safety:'Safety'};
+let cat='all';
+function drawMods(){
+  $('#mods').innerHTML=mods.filter(m=>cat==='all'||m.c===cat).map(m=>`<article class="card" data-c="${m.c}"><h3>${m.t}</h3><p class="meta">${cats[m.c]} · ${m.d}</p><details><summary>What you will learn</summary><ul>${m.p.map(x=>`<li>${x}</li>`).join('')}</ul></details></article>`).join('');
+}
+$('#chips').innerHTML=Object.entries(cats).map(([k,v])=>`<button class="chip" data-k="${k}" aria-pressed="${k==='all'}">${v}</button>`).join('');
+$('#chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.k;document.querySelectorAll('#chips .chip').forEach(x=>x.setAttribute('aria-pressed',x===b));drawMods()};
+drawMods();
+
+// Checklist
+const items=['Wear safety shoes, insulated gloves and safety glasses','Inspect tools and test leads for damage','Isolate and lock out the supply','Prove the circuit dead with a tested voltage tester','Check the work area is dry and clear','Know where the nearest first aid kit and fire extinguisher are','Never work alone on live equipment'];
+let done=[];try{done=JSON.parse(localStorage.getItem('eh-check')||'[]')}catch(e){}
+function drawList(){
+  $('#list').innerHTML=items.map((t,i)=>`<label class="check"><input type="checkbox" data-i="${i}" ${done.includes(i)?'checked':''}><span>${t}</span></label>`).join('');
+  const n=done.length,p=Math.round(n/items.length*100);
+  $('#pf').style.width=p+'%';$('#pb').setAttribute('aria-valuenow',p);
+  $('#pt').textContent=n===items.length?'All checks done. Safe to start work.':n+' of '+items.length+' checks done';
+}
+function save(){try{localStorage.setItem('eh-check',JSON.stringify(done))}catch(e){}}
+$('#list').onchange=e=>{const i=+e.target.dataset.i;done=e.target.checked?[...done,i]:done.filter(x=>x!==i);save();drawList()};
+$('#reset').onclick=()=>{done=[];save();drawList()};drawList();
+
+// Quiz
+const qs=[
+ {q:'What is the unit of electrical resistance?',o:['Ampere','Ohm','Watt','Volt'],a:1,e:'Resistance is measured in ohms (Ω).'},
+ {q:'A 230 V supply drives 2 A through a heater. What is its power?',o:['115 W','232 W','460 W','920 W'],a:2,e:'P = V × I = 230 × 2 = 460 W.'},
+ {q:'Which wire colour is the protective earth in modern Indian wiring?',o:['Green','Red','Black','Blue'],a:0,e:'Green (or green with yellow) is earth. Red, yellow and blue are phases; black is neutral.'},
+ {q:'What must you do first before working on a circuit?',o:['Wear a watch','Isolate and lock out the supply','Ask a colleague to hold the cable','Use a wet cloth'],a:1,e:'Isolate, lock out and prove dead before touching conductors.'},
+ {q:'Which extinguisher is safe on a live electrical fire?',o:['Water','Foam','CO₂','Wet sand'],a:2,e:'CO₂ does not conduct electricity and leaves no residue.'},
+ {q:'Two 10 Ω resistors are connected in parallel. Total resistance?',o:['20 Ω','10 Ω','5 Ω','2 Ω'],a:2,e:'1/R = 1/10 + 1/10 = 1/5, so R = 5 Ω.'}];
+let qi=0,sc=0;
+function showQ(){
+  const q=qs[qi];
+  $('#qz').innerHTML=`<div class="qtop"><span>Question ${qi+1} of ${qs.length}</span><span>Score ${sc}</span></div><h3>${q.q}</h3>${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('')}<p class="fb" id="fb"></p><button class="cta next" id="nx" hidden>${qi===qs.length-1?'See result':'Next question'}</button>`;
+}
+$('#qz').onclick=e=>{
+  const b=e.target.closest('.opt');
+  if(b){const q=qs[qi],i=+b.dataset.i;if(i===q.a)sc++;
+    document.querySelectorAll('.opt').forEach((x,k)=>{x.disabled=true;if(k===q.a)x.classList.add('ok');else if(k===i)x.classList.add('no')});
+    $('#fb').textContent=(i===q.a?'Correct. ':'Not quite. ')+q.e;$('#nx').hidden=false;$('#nx').focus();return}
+  if(e.target.id==='nx'){qi++;if(qi<qs.length)showQ();else{
+    $('#qz').innerHTML=`<h3>You scored ${sc} out of ${qs.length}</h3><p class="fb">${sc>=5?'Strong result. Move on to the next module.':sc>=3?'Good start. Review the modules you missed and try again.':'Revisit the fundamentals and safety modules, then retry.'}</p><button class="cta next" id="rt">Retake quiz</button>`}}
+  if(e.target.id==='rt'){qi=0;sc=0;showQ()}
+};
+showQ();
+</script>
+</body>
+</html>
